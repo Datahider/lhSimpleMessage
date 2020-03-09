@@ -13,9 +13,20 @@ require_once __DIR__ . '/../classes/lhSimpleMessageAttachment.php';
 interface lhSimpleMessageInterface {
     // GET
     public function text();
+    public function buddy();
+    public function replyto();
+
     public function attachments();
-    
+    public function hints();
+
+
     // SET
     public function setText($param);
+    public function setBuddy($param);
+    public function setReplyTo($param);
+    
+    // ADD
     public function addAttachment(lhSimpleMessageAttachment $param);
+    public function addHint(lhSimpleMessageHint $param);
+    
 }

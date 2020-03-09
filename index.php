@@ -6,6 +6,7 @@
  * and open the template in the editor.
  */
 require_once __DIR__ . '/lhSimpleMessage/classes/lhSimpleMessageAttachment.php';
+require_once __DIR__ . '/lhSimpleMessage/classes/lhSimpleMessageHint.php';
 require_once __DIR__ . '/lhSimpleMessage/classes/lhSimpleMessage.php';
 
 echo "Тестирование lhSimpleMessageAttachment:\n";
@@ -98,6 +99,32 @@ try {
     }
     echo "ok\n";
 
+    echo "Проверка установки собеседника...";
+    $msg->setBuddy(25);
+    if (($msg->buddy() == 25) && ($msg->replyto() == 25)) {
+        echo "оk\n";
+    } else {
+        throw new Exception("Установленный собеседник не совпадает с полученным от объекта");
+    }
+    
+    echo "Проверка установки replyto...";
+    $msg->setReplyTo(280);
+    if (($msg->buddy() == 25) && ($msg->replyto() == 280)) {
+        echo "оk\n";
+    } else {
+        throw new Exception("Установленный replyto не совпадает с полученным от объекта");
+    }
+    
+    echo "Тестирование подсказок";
+    $msg->addHint(new lhSimpleMessageHint("Подсказка 1", 1))->addHint(new lhSimpleMessageHint("Подсказка 2", "https://localhost/"));
+    if ($msg->hints()[0]->text() != "Подсказка 1") throw new Exception ("Текст первой подсказки не совпадает");
+    echo '.';
+    if ($msg->hints()[1]->text() != "Подсказка 2") throw new Exception ("Текст второй подсказки не совпадает");
+    echo '.';
+    if ($msg->hints()[0]->value() != 1) throw new Exception ("Значение первой подсказки не совпадает");
+    echo '.';
+    if ($msg->hints()[1]->value() != "https://localhost/") throw new Exception ("Значение второй подсказки не совпадает");
+    echo ".ok\n";
 
     echo "Удаление объекта";
     $msg = NULL;

@@ -14,13 +14,32 @@ require_once __DIR__ . '/../interface/lhSimpleMessageInterface.php';
 class lhSimpleMessage implements lhSimpleMessageInterface {
     private $text;
     private $attachments;
-    
+    private $hints;
+    private $buddy;
+    private $replyto;
+
     public function text() {
         return $this->text;
     }
     
     public function attachments() {
         return $this->attachments;
+    }
+    
+    public function hints() {
+        return $this->hints;
+    }
+    
+    public function buddy() {
+        return $this->buddy;
+    }
+    
+    public function replyto() {
+        if ($this->replyto) {
+            return $this->replyto;
+        } else {
+            return $this->buddy;
+        }
     }
     
     public function setText($param) {
@@ -30,5 +49,21 @@ class lhSimpleMessage implements lhSimpleMessageInterface {
     
     public function addAttachment(lhSimpleMessageAttachment $param) {
         $this->attachments[] = $param;
+        return $this;
+    }
+    
+    public function addHint(lhSimpleMessageHint $param) {
+        $this->hints[] = $param;
+        return $this;
+    }
+
+    public function setBuddy($param) {
+        $this->buddy = $param;
+        return $this;
+    }
+    
+    public function setReplyTo($param) {
+        $this->replyto = $param;
+        return $this;
     }
 }
