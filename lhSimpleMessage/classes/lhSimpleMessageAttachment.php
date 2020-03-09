@@ -35,7 +35,8 @@ class lhSimpleMessageAttachment implements lhSimpleMessageAttachmentInterface {
     
     // SET
     public function setName($param) {
-        $this->name = $param;
+        $name = preg_replace("/[\/\?\>\<]/", "_", $param);
+        $this->name = $name;
         return $this;
     }
     
