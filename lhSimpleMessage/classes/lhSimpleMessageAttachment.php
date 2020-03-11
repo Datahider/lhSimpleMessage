@@ -40,7 +40,7 @@ class lhSimpleMessageAttachment implements lhSimpleMessageAttachmentInterface {
         } else {
             $type = $matches[0];
         }
-        return $type;
+        return strtolower($type);
     }
     // SET
     public function setName($param) {
