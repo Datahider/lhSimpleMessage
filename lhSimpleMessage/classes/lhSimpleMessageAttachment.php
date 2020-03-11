@@ -32,7 +32,16 @@ class lhSimpleMessageAttachment implements lhSimpleMessageAttachmentInterface {
     public function size() {
         return filesize($this->file());
     }
-    
+
+    public function type() {
+        preg_match("/[^\.]+$/", $this->name(), $matches);
+        if ($this->name() == $matches[0]) {
+            $type = '';
+        } else {
+            $type = $matches[0];
+        }
+        return $type;
+    }
     // SET
     public function setName($param) {
         $name = preg_replace("/[\/\?\>\<]/", "_", $param);

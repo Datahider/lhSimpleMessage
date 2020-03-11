@@ -16,7 +16,9 @@ interface lhSimpleMessageAttachmentInterface {
     public function file();
     public function data();
     public function size();
-    
+    public function type();
+
+
     // SET
     public function setName($param);
     public function setFile($param);

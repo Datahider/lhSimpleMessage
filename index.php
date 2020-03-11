@@ -16,8 +16,8 @@ try {
     $tmpdata = rand().rand().rand();
     $tmpdata2 = md5($tmpdata);
     $att = new lhSimpleMessageAttachment();
-    $att->setName("test/tmp")->setData($tmpdata);
-    if ($att->name() != 'test_tmp') throw new Exception ("Не произведена замена символов в имени");
+    $att->setName("test/tmp.dat")->setData($tmpdata);
+    if ($att->name() != 'test_tmp.dat') throw new Exception ("Не произведена замена символов в имени");
     echo "ok\n";
 
     $tmpfile = $att->file();
@@ -33,6 +33,12 @@ try {
     }
 
     echo "Временный файл: $tmpfile\n";
+    
+    echo 'Тип вложения ...' . $att->type();
+    if ($att->type() != 'dat') {
+        throw new Exception("Не верно определен тип файла");
+    }
+    echo " (ok)\n";
     
     echo "Получение данных...";
     if ( (file_get_contents($att->file()) == $tmpdata) && ($att->data() == $tmpdata) ) {
