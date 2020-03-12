@@ -18,6 +18,11 @@ class lhSimpleMessage implements lhSimpleMessageInterface {
     private $buddy;
     private $replyto;
 
+    public function __construct() {
+        $this->attachments = [];
+        $this->hints = [];
+    }
+        
     public function text() {
         return $this->text;
     }
