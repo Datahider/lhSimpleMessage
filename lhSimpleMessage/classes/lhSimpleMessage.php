@@ -17,6 +17,7 @@ class lhSimpleMessage implements lhSimpleMessageInterface {
     private $hints;
     private $buddy;
     private $replyto;
+    private $type;
 
     public function __construct() {
         $this->attachments = [];
@@ -47,6 +48,11 @@ class lhSimpleMessage implements lhSimpleMessageInterface {
         }
     }
     
+    public function type() {
+        return $this->type;
+    }
+
+
     public function setText($param) {
         $this->text = $param;
         return $this;
@@ -69,6 +75,11 @@ class lhSimpleMessage implements lhSimpleMessageInterface {
     
     public function setReplyTo($param) {
         $this->replyto = $param;
+        return $this;
+    }
+    
+    public function setType($param) {
+        $this->type = $param;
         return $this;
     }
 }
