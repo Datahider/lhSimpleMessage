@@ -58,7 +58,7 @@ try {
     }
 
 
-    echo "Тестирование lsSimpleMessage:\n";
+    echo "\nТестирование lsSimpleMessage:\n";
     $tmptext = "Это текст для тестирования сообщения";
 
     echo "Создание объекта";
@@ -122,8 +122,8 @@ try {
         throw new Exception("Установленный replyto не совпадает с полученным от объекта");
     }
     
-    echo "Тестирование подсказок";
-    $msg->addHint(new lhSimpleMessageHint("Подсказка 1", 1))->addHint(new lhSimpleMessageHint("Подсказка 2", "https://localhost/"));
+    echo "\nТестирование подсказок";
+    $msg->addHint(new lhSimpleMessageHint("Подсказка 1", 1))->addHint(new lhSimpleMessageHint("Подсказка 2", "https://localhost/"))->addHint(new lhSimpleMessageHint("Подсказка 3"));
     if ($msg->hints()[0]->text() != "Подсказка 1") throw new Exception ("Текст первой подсказки не совпадает");
     echo '.';
     if ($msg->hints()[1]->text() != "Подсказка 2") throw new Exception ("Текст второй подсказки не совпадает");
@@ -131,6 +131,10 @@ try {
     if ($msg->hints()[0]->value() != 1) throw new Exception ("Значение первой подсказки не совпадает");
     echo '.';
     if ($msg->hints()[1]->value() != "https://localhost/") throw new Exception ("Значение второй подсказки не совпадает");
+    echo '.';
+    if ($msg->hints()[2]->text() != "Подсказка 3") throw new Exception("Текст третьей подсказки не совпадает");
+    echo '.';
+    if ($msg->hints()[2]->value() != "#") throw new Exception("Значение третьей подсказки не совпадает");
     echo ".ok\n";
 
     echo "Удаление объекта";

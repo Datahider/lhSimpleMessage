@@ -11,7 +11,7 @@
  * @author user
  */
 interface lhSimpleMessageHintInterface {
-    public function __construct($text, $value);
+    public function __construct($text, $value='#');
     public function text();
     public function value();
 }
