@@ -17,7 +17,7 @@ class lhSimpleMessageHint implements lhSimpleMessageHintInterface {
     private $value;
     
     // Конструктор
-    public function __construct($text, $value='#') {
+    public function __construct($text, $value='') {
         $this->text = $text;
         $this->value = $value;
     }

@@ -134,7 +134,7 @@ try {
     echo '.';
     if ($msg->hints()[2]->text() != "Подсказка 3") throw new Exception("Текст третьей подсказки не совпадает");
     echo '.';
-    if ($msg->hints()[2]->value() != "#") throw new Exception("Значение третьей подсказки не совпадает");
+    if ($msg->hints()[2]->value() != "") throw new Exception("Значение третьей подсказки не совпадает");
     echo ".ok\n";
 
     echo "Удаление объекта";
@@ -148,7 +148,7 @@ try {
     }
 
 
-    echo "Тестирование успешно завершено";
+    echo "\nТестирование успешно завершено";
 } catch (Exception $e) {
     echo "\n\nТЕСТИРОВАНИЕ ЗАВЕРШЕНО С ОШИБКОЙ:\n";
     echo $e->getMessage() . "\n";
