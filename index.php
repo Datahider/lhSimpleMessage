@@ -137,7 +137,21 @@ try {
     if ($msg->hints()[2]->value() != "") throw new Exception("Значение третьей подсказки не совпадает");
     echo ".ok\n";
 
-    echo "Удаление объекта";
+    echo "\nТестирование сервисных полей";
+    $msg->setServiceId("982734");
+    if ($msg->serviceId() != "982734") throw new Exception ("serviceId вернул не верное значение");
+    echo '.';
+    $msg->setServicePointer("9827223434");
+    if ($msg->servicePointer() != "9827223434") throw new Exception ("servicePointer вернул не верное значение");
+    echo '.';
+    $msg->setServiceData("9kllksdfo82734");
+    if ($msg->serviceData() != "9kllksdfo82734") throw new Exception ("setServiceData вернул не верное значение");
+    echo ".ok\n";
+
+
+
+
+    echo "\nУдаление объекта";
     $msg = NULL;
     sleep(1); echo '.'; sleep(1); echo '.'; sleep(1); echo "."; 
 

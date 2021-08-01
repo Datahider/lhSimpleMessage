@@ -18,6 +18,9 @@ class lhSimpleMessage implements lhSimpleMessageInterface {
     private $buddy;
     private $replyto;
     private $type;
+    private $service_id;
+    private $service_pointer;
+    private $service_data;
 
     public function __construct() {
         $this->attachments = [];
@@ -52,7 +55,18 @@ class lhSimpleMessage implements lhSimpleMessageInterface {
         return $this->type;
     }
 
+    public function serviceId() {
+        return $this->service_id;
+    }
+    
+    public function servicePointer() {
+        return $this->service_pointer;
+    }
 
+    public function serviceData() {
+        return $this->service_data;
+    }
+    
     public function setText($param) {
         $this->text = $param;
         return $this;
@@ -81,5 +95,17 @@ class lhSimpleMessage implements lhSimpleMessageInterface {
     public function setType($param) {
         $this->type = $param;
         return $this;
+    }
+    
+    public function setServiceId($param) {
+        $this->service_id = $param;
+    }
+    
+    public function setServicePointer($param) {
+        $this->service_pointer = $param;
+    }
+    
+    public function setServiceData($param) {
+        $this->service_data = $param;
     }
 }
